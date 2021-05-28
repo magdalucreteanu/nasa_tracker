@@ -16,9 +16,8 @@ export default HomeNavigator = () => {
         color: 'tomato'
       }
     }}>
-      <HomeStack.Screen name="Home" component={HomeScreen}/>
-      <HomeStack.Screen name="AddCategory" component={InputScreen} options={{headerTitle: 'Add Category'}}/>
-      <HomeStack.Screen name="AddEntry" component={InputScreen} options={{headerTitle: 'Add ToDo'}}/>
+      <HomeStack.Screen name="NASA Tracker" component={HomeScreen}/>
+      <HomeStack.Screen name="Settings" component={InputScreen} options={{headerTitle: 'Settings'}}/>
       <HomeStack.Screen name="Category" component={CategoryScreen}/>
     </HomeStack.Navigator>
   );

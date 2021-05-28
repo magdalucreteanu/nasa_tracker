@@ -2,16 +2,9 @@ import Category from '../models/category';
 import ToDoItem from '../models/todoitem';
 
 export const CATEGORIES = [
-  new Category('c1', 'Work', '#f5428d'),
-  new Category('c2', 'University', '#f54242'),
-  new Category('c3', 'Groceries', '#f5a442'),
-  new Category('c4', 'DIY Projects', '#f5d142'),
-  new Category('c5', 'Family', '#368dff'),
-  new Category('c6', 'Wishlist', '#41d95d'),
-  new Category('c7', 'Car', '#9eecff'),
-  new Category('c8', 'Vacation Packlist', '#b9ffb0'),
-  new Category('c9', 'Band', '#ffc7ff'),
-  new Category('c10', 'Things to Learn', '#47fced')
+  new Category('APOD', 'APOD', '#f5428d'),
+  new Category('Mars', 'Mars Rovers', '#f54242'),
+  new Category('Twitter', 'Twitter Feed', '#f5a442'),
 ];
 
 export const TODOITEMS = [

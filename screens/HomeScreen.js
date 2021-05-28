@@ -11,8 +11,8 @@ export default HomeScreen = ({ navigation }) => {
       headerRight: () => (
         <Button
           type="clear"
-          icon={<Ionicons name="ios-add" size={32} color="rgb(0, 122, 255)" />}
-          onPress={() => navigation.navigate("AddCategory", {title: "Category", category: ''})}
+          icon={<Ionicons name="ios-options" size={32} color="rgb(0, 122, 255)" />}
+          onPress={() => navigation.navigate("Settings", {title: "Settings", category: ''})}
         />
       ),
     });
@@ -24,6 +24,7 @@ export default HomeScreen = ({ navigation }) => {
     navigation.navigate("Category", { itemId: id });
   };
 
+/*
   return (
     <FlatList
       data={categories}
@@ -39,4 +40,22 @@ export default HomeScreen = ({ navigation }) => {
       numColumns={2}
     />
   );
+  */
+
+  return (
+    <FlatList
+      data={categories}
+      renderItem={(itemData) => {
+        return (
+          <GridTile
+            text={itemData.item.title}
+            onClick={clickHandler}
+            id={itemData.item.id}
+          />
+        );
+      }}
+      numColumns={1}
+    />
+  );
+
 };

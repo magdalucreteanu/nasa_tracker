@@ -17,8 +17,8 @@ export default CategoryScreen = ({route, navigation}) => {
       headerRight: () => (
         <Button
           type="clear"
-          icon={<Ionicons name="ios-add" size={32} color="rgb(0, 122, 255)" />}
-          onPress={() => navigation.navigate("AddEntry", {title: "ToDo", category: selectedCategory.title})}
+          icon={<Ionicons name="ios-options" size={32} color="rgb(0, 122, 255)" />}
+          onPress={() => navigation.navigate("Settings", {title: "Settings", category: selectedCategory.title})}
         />
       ),
     });

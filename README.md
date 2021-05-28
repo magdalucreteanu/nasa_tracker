@@ -15,3 +15,7 @@ Fehlerbehandlung:
 console.error: "React Native version missmatch" \
 Lösung: https://docs.expo.io/troubleshooting/react-native-version-mismatch/
 Magda: habe "expo upgrade" ausgeführt
+
+
+Icons
+https://infinitered.github.io/ionicons-version-3-search/

@@ -14,7 +14,7 @@ export default FavNavigator = () => {
         color: 'tomato'
       }
     }}>
-      <FavStack.Screen name="Favorites" component={FavScreen}/>
+      <FavStack.Screen name="Impressum" component={FavScreen}/>
     </FavStack.Navigator>
   );
 };

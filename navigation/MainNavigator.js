@@ -16,8 +16,8 @@ export default MainNavigator = () => {
 
             if (route.name === 'Home') {
               iconName = 'ios-home';
-            } else if (route.name === 'Favorites') {
-              iconName = focused ? 'ios-star' : 'ios-star-outline';
+            } else if (route.name === 'Impressum') {
+              iconName = focused ? 'ios-book' : 'ios-book-outline';
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -29,7 +29,7 @@ export default MainNavigator = () => {
         }}
       >
         <Tab.Screen name="Home" component={HomeNavigator}/>
-        <Tab.Screen name="Favorites" component={FavNavigator}/>
+        <Tab.Screen name="Impressum" component={FavNavigator}/>
       </Tab.Navigator>
     </NavigationContainer>
   );
