@@ -23,7 +23,7 @@ export default SettingsScreen = ({route, navigation}) => {
   const twitterToggleSwitch = () => setIsTwitterEnabled(previousState => !previousState);
 
   return (
-      <View style={{ flex: 1, padding: 20 }}>
+      <View style={styles.mainView}>
         <Text style={styles.titleText} >General</Text>
         <View style={styles.baseTextView}>
             <Text style={styles.baseText} >Dark Theme</Text>
@@ -77,7 +77,7 @@ export default SettingsScreen = ({route, navigation}) => {
                     value={isSpiritEnabled}
                   />
         </View>
-        <View style={ styles.baseTextView}>
+        <View style={styles.baseTextView}>
             <Text style={styles.baseText} >Twitter</Text>
             <Switch
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -93,16 +93,20 @@ export default SettingsScreen = ({route, navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  baseText: {
-    fontSize: 20
-  },
-  baseTextView: {
-    flexDirection: "row",
-    marginVertical: 5
+  mainView: {
+      flex: 1,
+      padding: 20
   },
   titleText: {
     fontSize: 24,
     fontWeight: "bold",
     marginVertical: 10
   },
+  baseTextView: {
+      flexDirection: "row",
+      marginVertical: 5
+  },
+  baseText: {
+    fontSize: 20
+  }
 });
