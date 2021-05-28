@@ -1,10 +1,15 @@
-import React, {useLayoutEffect} from 'react';
-import {View, Text} from 'react-native';
+import React, {useLayoutEffect, useState} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
+import SimpleDatePicker from "../components/SimpleDatePicker";
 
 export default ApodScreen = ({route, navigation}) => {
   const {itemId} = route.params;
+
+  const handleSuche = () => {
+    // TODO suche hier
+  }
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -20,8 +25,16 @@ export default ApodScreen = ({route, navigation}) => {
   }, [navigation]);
 
   return (
-    <View>
-        <Text>This is APOD</Text>
+    <View style={styles.mainView}>
+        <Text>Aktuelles Datum hier.</Text>
+        <Button title = 'Suche' onClick={handleSuche}/>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  mainView: {
+      flex: 1,
+      padding: 20
+  },
+});

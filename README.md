@@ -6,6 +6,10 @@ https://miro.com/app/board/o9J_lIYRLr8=/
 
 
 How-To: \
+
+https://www.npmjs.com/package/react-datepicker
+npm install react-datepicker --save \
+
 npm init \
 npm start
 
