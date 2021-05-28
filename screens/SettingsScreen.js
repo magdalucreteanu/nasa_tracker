@@ -9,17 +9,17 @@ export default SettingsScreen = ({route, navigation}) => {
     navigation.goBack();
   };
 
-  const [isDarkThemeEnabled, setIsDarkThemeEnabled] = useState(false);
+  const [isDarkThemeEnabled, setIsDarkThemeEnabled] = useState(true);
   const darkThemeToggleSwitch = () => setIsDarkThemeEnabled(previousState => !previousState);
-  const [isApodEnabled, setIsApodEnabled] = useState(false);
+  const [isApodEnabled, setIsApodEnabled] = useState(true);
   const apodToggleSwitch = () => setIsApodEnabled(previousState => !previousState);
-  const [isCuriosityEnabled, setIsCuriosityEnabled] = useState(false);
+  const [isCuriosityEnabled, setIsCuriosityEnabled] = useState(true);
   const curiosityToggleSwitch = () => setIsCuriosityEnabled(previousState => !previousState);
-  const [isOpportunityEnabled, setIsOpportunityEnabled] = useState(false);
+  const [isOpportunityEnabled, setIsOpportunityEnabled] = useState(true);
   const opportunityToggleSwitch = () => setIsOpportunityEnabled(previousState => !previousState);
-  const [isSpiritEnabled, setIsSpiritEnabled] = useState(false);
+  const [isSpiritEnabled, setIsSpiritEnabled] = useState(true);
   const spiritToggleSwitch = () => setIsSpiritEnabled(previousState => !previousState);
-  const [isTwitterEnabled, setIsTwitterEnabled] = useState(false);
+  const [isTwitterEnabled, setIsTwitterEnabled] = useState(true);
   const twitterToggleSwitch = () => setIsTwitterEnabled(previousState => !previousState);
 
   return (

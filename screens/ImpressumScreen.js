@@ -1,10 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from "react-native";
-import ToDoList from '../components/ToDoList';
-import {TODOITEMS} from '../data/dummy-data';
 
 export default ImpressumScreen = ({ route, navigation}) => {
-  const favToDos = TODOITEMS.filter(item => item.isFav);
 
   return (
     <View style={styles.mainView}>
