@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Ionicons} from '@expo/vector-icons';
 import HomeNavigator from './HomeNavigator';
-import FavNavigator from './FavNavigator';
+import ImpressumNavigator from './ImpressumNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +29,7 @@ export default MainNavigator = () => {
         }}
       >
         <Tab.Screen name="Home" component={HomeNavigator}/>
-        <Tab.Screen name="Impressum" component={FavNavigator}/>
+        <Tab.Screen name="Impressum" component={ImpressumNavigator}/>
       </Tab.Navigator>
     </NavigationContainer>
   );

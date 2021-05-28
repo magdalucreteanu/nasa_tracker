@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
-import InputScreen from '../screens/InputScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 import CategoryScreen from '../screens/CategoryScreen';
 
 const HomeStack = createStackNavigator();
@@ -17,7 +17,7 @@ export default HomeNavigator = () => {
       }
     }}>
       <HomeStack.Screen name="NASA Tracker" component={HomeScreen}/>
-      <HomeStack.Screen name="Settings" component={InputScreen} options={{headerTitle: 'Settings'}}/>
+      <HomeStack.Screen name="Settings" component={SettingsScreen} options={{headerTitle: 'Settings'}}/>
       <HomeStack.Screen name="Category" component={CategoryScreen}/>
     </HomeStack.Navigator>
   );
