@@ -3,8 +3,11 @@ import { FlatList } from "react-native";
 import GridTile from "../components/GridTile";
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
+import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
 export default HomeScreen = ({ navigation }) => {
+    const colorScheme = useColorScheme();
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -44,19 +47,21 @@ export default HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <FlatList
-      data={MENUS}
-      renderItem={(itemData) => {
-        return (
-          <GridTile
-            text={itemData.item.title}
-            onClick={clickHandler}
-            id={itemData.item.id}
-          />
-        );
-      }}
-      numColumns={1}
-    />
+    <AppearanceProvider>
+        <FlatList
+          data={MENUS}
+          renderItem={(itemData) => {
+            return (
+              <GridTile
+                text={itemData.item.title}
+                onClick={clickHandler}
+                id={itemData.item.id}
+              />
+            );
+          }}
+          numColumns={1}
+        />
+    </AppearanceProvider>
   );
 
 };
