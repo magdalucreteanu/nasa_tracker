@@ -1,15 +1,18 @@
 import React, {useLayoutEffect, useState} from 'react';
-import {View, Text, StyleSheet, Alert, Image, SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import {View, Text, StyleSheet, Alert, Image, SafeAreaView, ScrollView, StatusBar, DatePicker } from 'react-native';
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
-import SimpleDatePicker from "../components/SimpleDatePicker";
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { format } from "date-fns";
 
 export default ApodScreen = ({route, navigation}) => {
   const {itemId} = route.params;
 
   const [data, setData] = useState('');
 
-  const imageUri = 'https://reactnative.dev/img/tiny_logo.png';
+  const [date, setDate] = useState(new Date());
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -24,41 +27,74 @@ export default ApodScreen = ({route, navigation}) => {
     });
   }, [navigation]);
 
-    const getApodHandler = async () => {
-        try {
-            let response = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY');
-            let json = await response.json();
-            setData(json);
-            // Alert.alert(data.title);
-            // Alert.alert(data.image);
-            /*let json = {
-                title: 'Wow wow',
-                image: 'https://reactnative.dev/img/tiny_logo.png'
-            }
-            setData(json);
-            */
-        } catch (error) {
-            Alert.alert('error');
-        }
-    }
+  loadData = async (currentDate) => {
+    try {
+          let formattedDate = format(currentDate, 'yyyy-MM-dd');
+          let response = await fetch('https://api.nasa.gov/planetary/apod?api_key=EbkmyHpRcGZRJdA4drqYbFPaVUIR8uLsbA6LI72w&date='.concat(formattedDate));
+          let json = await response.json();
+          /*
+          let json = {
+              title: 'Lunar Dust and Duct Tape',
+              url: 'https://apod.nasa.gov/apod/image/2105/AS17-137-20979_1024.jpg',
+              explanation: 'Patches, patches, patches...'
+          };*/
+          setData(json);
+      } catch (error) {
+          Alert.alert('error');
+      }
+  }
+
+    const onChange = async (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(Platform.OS === 'ios');
+        setDate(currentDate);
+        loadData(currentDate);
+      };
+
+      const showMode = (currentMode) => {
+        setShow(true);
+        setMode(currentMode);
+      };
+
+      const showDatepicker = () => {
+        showMode('date');
+      };
 
   return (
     <View style={styles.mainView}>
-        <Text>Aktuelles Datum hier.</Text>
-        <Button title = 'Suche' onPress={getApodHandler}/>
+        <View style={{flex: 1, flexDirection: 'row'}}>
+                <Text style={styles.textStyle}> Date: {date.toLocaleDateString()}</Text>
+                <Button
+                          type="clear"
+                          icon={<Ionicons name="md-calendar" size={24} color="rgb(0, 122, 255)" />}
+                          onPress={showDatepicker} />
+          </View>
+
+          {show && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={date}
+              mode={mode}
+              is24Hour={true}
+              display="default"
+              onChange={onChange}
+            />
+          )}
         <Text style={styles.titleText}>{data.title}</Text>
 
-        <SafeAreaView style={styles.container}>
-          <ScrollView>
-            <Image
-                style={styles.image}
-                source={{uri: data.url}}
-              />
-            <Text style={styles.textArea}>
-              {data.explanation}
-            </Text>
-          </ScrollView>
-        </SafeAreaView>
+        <View style={{flex: 10}}>
+            <SafeAreaView style={styles.container}>
+              <ScrollView>
+                <Image
+                    style={styles.image}
+                    source={{uri: data.url}}
+                  />
+                <Text style={styles.textArea}>
+                  {data.explanation}
+                </Text>
+              </ScrollView>
+            </SafeAreaView>
+        </View>
     </View>
   );
 };
@@ -82,6 +118,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
+  },
+  textStyle: {
+    fontSize: 16,
   },
   textArea: {
       marginVertical: 10,

@@ -7,8 +7,19 @@ https://miro.com/app/board/o9J_lIYRLr8=/
 
 How-To: \
 
-https://www.npmjs.com/package/react-datepicker
-npm install react-datepicker --save \
+Install npm
+Install expo
+Install AndroidStudio
+expo upgrade
+
+Install Expo App on Mobile
+
+https://github.com/react-native-datetimepicker/datetimepicker
+npm install @react-native-community/datetimepicker --save \
+
+https://stackoverflow.com/questions/34590369/formatting-a-date-string-in-react-native
+npm install date-fns --save
+
 npm install react-native-appearance --save \
 
 npm init \
