@@ -1,35 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, useColorScheme } from "react-native";
+import {getGridTileTheme, getGridTileTextTheme} from "../constants/Themes";
 
 export default GridTile = props => {
+  const colorScheme = useColorScheme();
   return (
     <TouchableOpacity
-      style={styles.itemContainer}
+      style={getGridTileTheme(colorScheme === "light")}
       onPress={() => props.onClick(props.id)}
     >
-      <Text style={styles.gridText}>{props.text}</Text>
+      <Text style={getGridTileTextTheme(colorScheme === "light")}>{props.text}</Text>
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  itemContainer: {
-    flex: 1,
-    margin: 15,
-    padding: 15,
-    height: 100,
-    alignItems: "flex-end",
-    justifyContent: "flex-end",
-    backgroundColor: "white",
-    borderRadius: 10,
-    shadowColor: "black",
-    shadowOpacity: 0.25,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 10
-  },
-  gridText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'right'
-  }
-});

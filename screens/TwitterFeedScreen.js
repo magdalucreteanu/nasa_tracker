@@ -1,10 +1,13 @@
 import React, {useLayoutEffect} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, useColorScheme} from 'react-native';
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
+import {getBaseTextTheme, getThemeBg} from "../constants/Themes";
+import Colors from "../constants/Colors";
 
 export default TwitterFeedScreen = ({route, navigation}) => {
   const {itemId} = route.params;
+  const colorScheme = useColorScheme();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -12,7 +15,7 @@ export default TwitterFeedScreen = ({route, navigation}) => {
       headerRight: () => (
         <Button
           type="clear"
-          icon={<Ionicons name="ios-options" size={32} color="rgb(0, 122, 255)" />}
+          icon={<Ionicons name="ios-options" size={32} color={Colors.settingsIconColor} />}
           onPress={() => navigation.navigate("Settings", {title: "Settings"})}
         />
       ),
@@ -20,8 +23,8 @@ export default TwitterFeedScreen = ({route, navigation}) => {
   }, [navigation]);
 
   return (
-    <View>
-        <Text>This is Twitter Feed</Text>
+    <View style={[getThemeBg(colorScheme === "light"), {flex: 1}]}>
+        <Text style={getBaseTextTheme(colorScheme === "light")}>This is Twitter Feed</Text>
     </View>
   );
 };

@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import {View, Text, TouchableWithoutFeedback, Keyboard, StyleSheet, Switch, AsyncStorage, Alert} from 'react-native';
+import {View, Text, TouchableWithoutFeedback, Keyboard, StyleSheet, Switch, AsyncStorage, Alert, useColorScheme} from 'react-native';
+import {getThemeBg, getBaseTextTheme, getTitleTextTheme} from "../constants/Themes";
 
 export default SettingsScreen = ({route, navigation}) => {
   const {title} = route.params;
+  const colorScheme = useColorScheme();
 
   const addHandler = name => {
     console.log("add this " + title + ": " + name);
     navigation.goBack();
   };
 
-  const [darkThemeStorageValue, setDarkThemeStorageValue] = useState('');
+  /*const [darkThemeStorageValue, setDarkThemeStorageValue] = useState('');
    AsyncStorage.getItem("isDarkThemeEnabled").then(value => {
         if (value != null) {
             setDarkThemeStorageValue(value);
@@ -20,7 +22,7 @@ export default SettingsScreen = ({route, navigation}) => {
    const [isDarkThemeEnabled, setIsDarkThemeEnabled] = useState(!(new Boolean(darkThemeStorageValue)));
    const darkThemeToggleSwitch = () => {
      AsyncStorage.setItem("isDarkThemeEnabled", JSON.stringify(!isDarkThemeEnabled)).then(setIsDarkThemeEnabled(previousState => !previousState));
-  }
+  }*/
 
   const [twitterStorageValue, setTwitterStorageValue] = useState('');
    AsyncStorage.getItem("isTwitterEnabled").then(value => {
@@ -45,10 +47,10 @@ export default SettingsScreen = ({route, navigation}) => {
   const spiritToggleSwitch = () => setIsSpiritEnabled(previousState => !previousState);
 
   return (
-      <View style={styles.mainView}>
-        <Text style={styles.titleText} >General</Text>
+      <View style={[getThemeBg(colorScheme === "light"), styles.mainView]}>
+        {/* <Text style={getTitleTextTheme(colorScheme === "light")} >General</Text>
         <View style={styles.baseTextView}>
-            <Text style={styles.baseText} >Dark Theme</Text>
+            <Text style={getBaseTextTheme(colorScheme === "light")} >Dark Theme</Text>
             <Switch
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
                     thumbColor={isDarkThemeEnabled ? "#f5dd4b" : "#f4f3f4"}
@@ -56,11 +58,11 @@ export default SettingsScreen = ({route, navigation}) => {
                     onValueChange={darkThemeToggleSwitch}
                     value={isDarkThemeEnabled}
                   />
-        </View>
+        </View> */}
 
-        <Text style={styles.titleText} >Notifications</Text>
+        <Text style={getTitleTextTheme(colorScheme === "light")} >Notifications</Text>
         <View style={styles.baseTextView}>
-            <Text style={styles.baseText} >Twitter</Text>
+            <Text style={getBaseTextTheme(colorScheme === "light")} >Twitter</Text>
             <Switch
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
                     thumbColor={isTwitterEnabled ? "#f5dd4b" : "#f4f3f4"}
@@ -121,20 +123,11 @@ export default SettingsScreen = ({route, navigation}) => {
 const styles = StyleSheet.create({
   mainView: {
       flex: 1,
-      padding: 20
-  },
-  titleText: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginVertical: 10
+      padding: 20,
   },
   baseTextView: {
       flexDirection: "row",
-      marginVertical: 5
-  },
-  baseText: {
-    fontSize: 20,
-    color: '#000000'
+      marginVertical: 5,
   },
   baseTextInactive: {
       fontSize: 20,

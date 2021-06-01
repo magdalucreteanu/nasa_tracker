@@ -1,9 +1,11 @@
 import React from 'react';
-import {View, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import {View, TouchableWithoutFeedback, Keyboard, useColorScheme} from 'react-native';
+import {getBaseTextTheme, getThemeBg} from "../constants/Themes";
 import InputTile from '../components/InputTile'
 
 export default InputScreen = ({route, navigation}) => {
   const {title} = route.params;
+  const colorScheme = useColorScheme();
 
   const addHandler = name => {
     console.log("add this " + title + ": " + name);
