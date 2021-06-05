@@ -22,10 +22,14 @@ npm install date-fns --save
 
 npm install react-native-appearance --save \
 
+UPDATE 05.06
+
 npm install use-dark-mode \
 https://github.com/donavon/use-dark-mode \
 
 npm install react-dark-mode-toggle \
+
+END UPDATE 05.06
 
 npm init \
 npm start
