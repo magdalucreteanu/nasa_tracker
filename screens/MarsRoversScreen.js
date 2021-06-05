@@ -1,5 +1,5 @@
-import React, {useLayoutEffect} from 'react';
-import {View, Text, StyleSheet, Image, useColorScheme, SafeAreaView, ScrollView, StatusBar, TouchableHighlight, Alert } from 'react-native';
+import React, { useLayoutEffect } from 'react';
+import { View, Text, StyleSheet, Image, useColorScheme, SafeAreaView, ScrollView, StatusBar, TouchableHighlight, Alert } from 'react-native';
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 import {getBaseTextTheme, getThemeBg, getTitleTextTheme} from "../constants/Themes";

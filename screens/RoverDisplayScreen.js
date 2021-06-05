@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useState} from 'react';
+import React, {useLayoutEffect, useState, useEffect} from 'react';
 import { FlatList, View, Text, StyleSheet, Image, useColorScheme, SafeAreaView, ScrollView, StatusBar, TouchableHighlight, Alert } from 'react-native';
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
@@ -11,11 +11,15 @@ import Colors from "../constants/Colors";
 
 export default RoverDisplayScreen = ({ route, navigation}) => {
 
+  let today = new Date();
+  let yesterday = new Date();
+  yesterday. setDate(today. getDate() - 1);
+
   const {rover} = route.params;
 
   const [data, setData] = useState('');
 
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(yesterday);
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
 
@@ -65,6 +69,11 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
   const clickHandler = (id) => {
     Alert.alert(id);
   }
+
+    useEffect(() => {
+        loadData(yesterday);
+      }, []);
+
 
   return (
     <View style={[getThemeBg(colorScheme === "light"), styles.mainView]}>

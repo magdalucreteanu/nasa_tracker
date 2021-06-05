@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 import { FlatList, View, Text, StyleSheet, Alert, Image, SafeAreaView, ScrollView, StatusBar, DatePicker, useColorScheme } from 'react-native';
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
@@ -62,6 +62,11 @@ export default ApodScreen = ({ route, navigation }) => {
   const showDatepicker = () => {
     showMode('date');
   };
+
+    useEffect(() => {
+        loadData(new Date());
+      }, []);
+
 
   return (
     <View style={[getThemeBg(colorScheme === "light"), styles.mainView]}>
