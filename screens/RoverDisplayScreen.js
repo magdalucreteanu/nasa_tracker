@@ -97,7 +97,6 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
                      <Image
                        style={styles.image}
                        source={{ uri: itemData.item.img_src }}
-                       alt={{itemData.item.img_src}}
                        resizeMode="contain"
                      />
                     );
