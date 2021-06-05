@@ -40,7 +40,7 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
         let apiLink = 'https://api.nasa.gov/mars-photos/api/v1/rovers/'.concat(rover).concat('/photos?api_key=EbkmyHpRcGZRJdA4drqYbFPaVUIR8uLsbA6LI72w&earth_date='.concat(formattedDate));
         let response = await fetch(apiLink);
         let json = await response.json();
-        setData(json);
+        setData(json.photos);
       } catch (error) {
         Alert.alert('error');
       }
@@ -89,22 +89,21 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
       <View style={{ flex: 10 }}>
         <SafeAreaView style={styles.container}>
           <ScrollView>
-              <View>
-                 <FlatList
-                      data={data.photos}
-                      style={getThemeBg(colorScheme === "light")}
-                      renderItem={(itemData) => {
-                        return (
-                          <GridTile
-                            text={itemData.id}
-                            onClick={clickHandler}
-                            id={itemData.id}
-                          />
-                        );
-                      }}
-                      numColumns={1}
-                    />
-              </View>
+            <FlatList
+                  data={data}
+                  style={getThemeBg(colorScheme === "light")}
+                  renderItem={(itemData) => {
+                    return (
+                     <Image
+                       style={styles.image}
+                       source={{ uri: itemData.item.img_src }}
+                       alt={{itemData.item.img_src}}
+                       resizeMode="contain"
+                     />
+                    );
+                  }}
+                  numColumns={1}
+                />
           </ScrollView>
         </SafeAreaView>
       </View>
