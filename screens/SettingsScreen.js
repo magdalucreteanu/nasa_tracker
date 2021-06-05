@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {View, Text, TouchableWithoutFeedback, Keyboard, StyleSheet, Switch, AsyncStorage, Alert, useColorScheme} from 'react-native';
 import {getThemeBg, getBaseTextTheme, getTitleTextTheme} from "../constants/Themes";
+import {DarkModeToggle} from "../components/DarkModeToggle.js";
+
 
 export default SettingsScreen = ({route, navigation}) => {
   const {title} = route.params;
@@ -11,7 +13,9 @@ export default SettingsScreen = ({route, navigation}) => {
     navigation.goBack();
   };
 
-  /*const [darkThemeStorageValue, setDarkThemeStorageValue] = useState('');
+   const [isDarkMode, setIsDarkMode] = useState(() => false);
+
+  const [darkThemeStorageValue, setDarkThemeStorageValue] = useState('');
    AsyncStorage.getItem("isDarkThemeEnabled").then(value => {
         if (value != null) {
             setDarkThemeStorageValue(value);
@@ -22,7 +26,8 @@ export default SettingsScreen = ({route, navigation}) => {
    const [isDarkThemeEnabled, setIsDarkThemeEnabled] = useState(!(new Boolean(darkThemeStorageValue)));
    const darkThemeToggleSwitch = () => {
      AsyncStorage.setItem("isDarkThemeEnabled", JSON.stringify(!isDarkThemeEnabled)).then(setIsDarkThemeEnabled(previousState => !previousState));
-  }*/
+  }
+
 
   const [twitterStorageValue, setTwitterStorageValue] = useState('');
    AsyncStorage.getItem("isTwitterEnabled").then(value => {
@@ -48,17 +53,18 @@ export default SettingsScreen = ({route, navigation}) => {
 
   return (
       <View style={[getThemeBg(colorScheme === "light"), styles.mainView]}>
-        {/* <Text style={getTitleTextTheme(colorScheme === "light")} >General</Text>
+        <Text style={getTitleTextTheme(colorScheme === "light")} >General</Text>
         <View style={styles.baseTextView}>
             <Text style={getBaseTextTheme(colorScheme === "light")} >Dark Theme</Text>
+            /*<DarkModeToggle/>*/
             <Switch
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
                     thumbColor={isDarkThemeEnabled ? "#f5dd4b" : "#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={darkThemeToggleSwitch}
                     value={isDarkThemeEnabled}
-                  />
-        </View> */}
+                 />
+        </View>
 
         <Text style={getTitleTextTheme(colorScheme === "light")} >Notifications</Text>
         <View style={styles.baseTextView}>
