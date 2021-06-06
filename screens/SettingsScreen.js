@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {View, Text, TouchableWithoutFeedback, Keyboard, StyleSheet, Switch, AsyncStorage, Alert, useColorScheme} from 'react-native';
 import {getThemeBg, getBaseTextTheme, getTitleTextTheme} from "../constants/Themes";
-import {DarkModeToggle} from "../components/DarkModeToggle.js";
+//import {DarkModeToggle} from "../components/DarkModeToggle.js";
 
 
 export default SettingsScreen = ({route, navigation}) => {
