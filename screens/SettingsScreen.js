@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {View, Text, TouchableWithoutFeedback, Keyboard, StyleSheet, Switch, AsyncStorage, Alert, useColorScheme} from 'react-native';
 import {getThemeBg, getBaseTextTheme, getTitleTextTheme} from "../constants/Themes";
-//import {DarkModeToggle} from "../components/DarkModeToggle.js";
 
 
 export default SettingsScreen = ({route, navigation}) => {
@@ -56,7 +55,6 @@ export default SettingsScreen = ({route, navigation}) => {
         <Text style={getTitleTextTheme(colorScheme === "light")} >General</Text>
         <View style={styles.baseTextView}>
             <Text style={getBaseTextTheme(colorScheme === "light")} >Dark Theme</Text>
-            /*<DarkModeToggle/>*/
             <Switch
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
                     thumbColor={isDarkThemeEnabled ? "#f5dd4b" : "#f4f3f4"}
