@@ -15,37 +15,21 @@ export default SettingsScreen = ({ route, navigation }) => {
 
   const [isDarkMode, setIsDarkMode] = useState(() => false);
 
- /* const [darkThemeStorageValue, setDarkThemeStorageValue] = useState('');
-  AsyncStorage.getItem("isDarkThemeEnabled").then(value => {
-    if (value != null) {
-      setDarkThemeStorageValue(value);
-    } else {
-      setDarkThemeStorageValue('true');
-    }
-  });*/
-  //const [isDarkThemeEnabled, setIsDarkThemeEnabled] = useState(!(new Boolean(darkThemeStorageValue)));
   const darkThemeToggleSwitch = () => {
     setToggle(toggle => ({
       darkTheme: !toggle.darkTheme, 
       twitterFeed: toggle.twitterFeed,
     }));
     storeTheme(toggle);
-    //AsyncStorage.setItem("isDarkThemeEnabled", JSON.stringify(!isDarkThemeEnabled)).then(setIsDarkThemeEnabled(previousState => !previousState));
   };
 
-
-  const [twitterStorageValue, setTwitterStorageValue] = useState('');
-  AsyncStorage.getItem("isTwitterEnabled").then(value => {
-    if (value != null) {
-      setTwitterStorageValue(value);
-    } else {
-      setTwitterStorageValue('true');
-    }
-  });
-  const [isTwitterEnabled, setIsTwitterEnabled] = useState(!(new Boolean(twitterStorageValue)));
   const twitterToggleSwitch = () => {
-    AsyncStorage.setItem("isTwitterEnabled", JSON.stringify(!isTwitterEnabled)).then(setIsTwitterEnabled(previousState => !previousState));
-  }
+    setToggle(toggle => ({
+      darkTheme: toggle.darkTheme, 
+      twitterFeed: !toggle.twitterFeed,
+    }));
+    storeTheme(toggle);
+  };
 
   const [isApodEnabled, setIsApodEnabled] = useState(false);
   const apodToggleSwitch = () => setIsApodEnabled(previousState => !previousState);
@@ -75,10 +59,10 @@ export default SettingsScreen = ({ route, navigation }) => {
         <Text style={getBaseTextTheme(toggle.darkTheme)} >Twitter</Text>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isTwitterEnabled ? "#f5dd4b" : "#f4f3f4"}
+          thumbColor={toggle.twitterFeed ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
           onValueChange={twitterToggleSwitch}
-          value={isTwitterEnabled}
+          value={toggle.twitterFeed}
         />
       </View>
 
