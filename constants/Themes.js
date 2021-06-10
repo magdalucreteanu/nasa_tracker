@@ -1,19 +1,19 @@
 export const getThemeBg = (isLight) => {
     return {
-        backgroundColor: isLight ? "white" : "black",
+        backgroundColor: isLight ? "black" : "white",
     }
 };
 
 export const getBaseTextTheme = (isLight) => {
     return {
-        color: isLight ? "black" : "white",
+        color: isLight ? "white" : "black",
         fontSize: 20,
     }
 };
 
 export const getTitleTextTheme = (isLight) => {
     return {
-        color: isLight ? "black" : "white",
+        color: isLight ? "white" : "black",
         fontSize: 24,
         fontWeight: "bold",
         marginVertical: 10,
@@ -22,7 +22,7 @@ export const getTitleTextTheme = (isLight) => {
 
 export const getGridTileTheme = (isLight) => {
     return {
-        backgroundColor: isLight ? "#bbd0ff" : "#101010",
+        backgroundColor: isLight ?  "#101010" : "#bbd0ff",
         flex: 1,
         margin: 15,
         padding: 15,
@@ -40,7 +40,7 @@ export const getGridTileTheme = (isLight) => {
 
 export const getGridTileTextTheme = (isLight) => {
     return {
-        color: isLight ? "black" : "white",
+        color: isLight ? "white" : "black",
         fontSize: 25,
         fontWeight: 'bold',
         textAlign: 'right'
@@ -49,13 +49,13 @@ export const getGridTileTextTheme = (isLight) => {
 
 export const getBottomTabTheme = (isLight) => {
     return {
-        backgroundColor: isLight ? "#e5e5e5" : "#101010",
+        backgroundColor: isLight ?  "#101010" : "#e5e5e5",
     }
 };
 
 export const getHeaderTheme = (isLight) => {
     return {
-        backgroundColor: isLight ? "#e5e5e5" : "#101010",
+        backgroundColor: isLight ? "#101010" : "#e5e5e5" ,
         height: 100,
 
     }

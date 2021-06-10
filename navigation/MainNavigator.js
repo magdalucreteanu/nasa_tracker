@@ -1,5 +1,4 @@
-import React from 'react';
-import { useColorScheme } from "react-native";
+import React, {useContext}  from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
@@ -7,11 +6,12 @@ import HomeNavigator from './HomeNavigator';
 import ImpressumNavigator from './ImpressumNavigator';
 import { getBottomTabTheme} from "../constants/Themes";
 import Colors from "../constants/Colors";
+import {ToggleContext} from "../data/ToggleContext";
 
 const Tab = createBottomTabNavigator();
 
 export default MainNavigator = () => {
-  const colorScheme = useColorScheme();
+  const [toggle, setToggle] = useContext(ToggleContext);
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={({ route }) => ({
@@ -30,7 +30,7 @@ export default MainNavigator = () => {
         tabBarOptions={{
           activeTintColor: Colors.homeIconColorActive,
           inactiveTintColor: Colors.homeIconColorInactive,
-          style: getBottomTabTheme(colorScheme === "light")
+          style: getBottomTabTheme(toggle.darkTheme)
         }}
       >
         <Tab.Screen name="Home" component={HomeNavigator} />

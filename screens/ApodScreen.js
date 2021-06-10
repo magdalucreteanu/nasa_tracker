@@ -1,15 +1,16 @@
-import React, { useLayoutEffect, useState, useEffect } from 'react';
-import { FlatList, View, Text, StyleSheet, Alert, Image, SafeAreaView, ScrollView, StatusBar, DatePicker, useColorScheme } from 'react-native';
+import React, { useLayoutEffect, useState, useEffect, useContext } from 'react';
+import { FlatList, View, Text, StyleSheet, Alert, Image, SafeAreaView, ScrollView, StatusBar, DatePicker } from 'react-native';
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { format } from "date-fns";
 import { getBaseTextTheme, getThemeBg, getTitleTextTheme } from "../constants/Themes";
 import Colors from "../constants/Colors";
+import {ToggleContext} from "../data/ToggleContext";
 
 export default ApodScreen = ({ route, navigation }) => {
   const { itemId } = route.params;
-  const colorScheme = useColorScheme();
+  const [toggle, setToggle] = useContext(ToggleContext);
 
   const [data, setData] = useState('');
 
@@ -69,9 +70,9 @@ export default ApodScreen = ({ route, navigation }) => {
 
 
   return (
-    <View style={[getThemeBg(colorScheme === "light"), styles.mainView]}>
+    <View style={[getThemeBg(toggle.darkTheme), styles.mainView]}>
       <View style={styles.datePicker}>
-        <Text style={getBaseTextTheme(colorScheme === "light")}> Date: {date.toLocaleDateString()}</Text>
+        <Text style={getBaseTextTheme(toggle.darkTheme)}> Date: {date.toLocaleDateString()}</Text>
         <Button
           type="clear"
           icon={<Ionicons name="md-calendar" size={24} color={Colors.calendarIconColor} />}
@@ -88,7 +89,7 @@ export default ApodScreen = ({ route, navigation }) => {
           onChange={onChange}
         />
       )}
-      <Text style={[getTitleTextTheme(colorScheme === "light"), styles.titleText]}>{data.title}</Text>
+      <Text style={[getTitleTextTheme(toggle.darkTheme), styles.titleText]}>{data.title}</Text>
 
       <View style={{ flex: 10 }}>
         <SafeAreaView style={styles.container}>
@@ -98,7 +99,7 @@ export default ApodScreen = ({ route, navigation }) => {
               source={{ uri: data.url }}
               resizeMode="contain"
             />
-            <Text style={[getBaseTextTheme(colorScheme === "light"), styles.textArea]}>
+            <Text style={[getBaseTextTheme(toggle.darkTheme), styles.textArea]}>
               {data.explanation}
             </Text>
           </ScrollView>

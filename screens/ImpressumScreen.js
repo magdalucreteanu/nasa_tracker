@@ -1,14 +1,15 @@
-import React from 'react';
-import { View, Text, StyleSheet, useColorScheme } from "react-native";
+import React, {useContext} from 'react';
+import { View, Text, StyleSheet } from "react-native";
 import {getBaseTextTheme, getThemeBg, getTitleTextTheme} from "../constants/Themes";
+import {ToggleContext} from "../data/ToggleContext";
 
 export default ImpressumScreen = ({ route, navigation}) => {
-  const colorScheme = useColorScheme();
+  const [toggle, setToggle] = useContext(ToggleContext);
   return (
-    <View style={[getThemeBg(colorScheme === "light"), styles.mainView]}>
-        <Text style={getTitleTextTheme(colorScheme === "light")}>Entwickler:</Text>
-        <Text style={getBaseTextTheme(colorScheme === "light")}>Magdalena Lucreteanu</Text>
-        <Text style={getBaseTextTheme(colorScheme === "light")}>Kirsten Grahl</Text>
+    <View style={[getThemeBg(toggle.darkTheme), styles.mainView]}>
+        <Text style={getTitleTextTheme(toggle.darkTheme)}>Entwickler:</Text>
+        <Text style={getBaseTextTheme(toggle.darkTheme)}>Magdalena Lucreteanu</Text>
+        <Text style={getBaseTextTheme(toggle.darkTheme)}>Kirsten Grahl</Text>
     </View>
   );
 };

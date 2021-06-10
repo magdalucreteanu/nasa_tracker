@@ -1,11 +1,12 @@
-import React from 'react';
-import {View, TouchableWithoutFeedback, Keyboard, useColorScheme} from 'react-native';
+import React, {useContext} from 'react';
+import {View, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import {getBaseTextTheme, getThemeBg} from "../constants/Themes";
-import InputTile from '../components/InputTile'
+import InputTile from '../components/InputTile';
+import {ToggleContext} from "../data/ToggleContext";
 
 export default InputScreen = ({route, navigation}) => {
   const {title} = route.params;
-  const colorScheme = useColorScheme();
+  const [toggle, setToggle] = useContext(ToggleContext);
 
   const addHandler = name => {
     console.log("add this " + title + ": " + name);

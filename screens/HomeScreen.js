@@ -1,13 +1,15 @@
-import React, { useLayoutEffect } from "react";
-import { FlatList, useColorScheme } from "react-native";
+import React, { useLayoutEffect, useContext } from "react";
+import { FlatList } from "react-native";
 import GridTile from "../components/GridTile";
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 import {getBaseTextTheme, getTitleTextTheme, getThemeBg} from "../constants/Themes";
 import Colors from "../constants/Colors";
+import {ToggleContext} from '../data/ToggleContext';
 
 export default HomeScreen = ({ navigation }) => {
-  const colorScheme = useColorScheme();
+  const [toggle, setToggle] = useContext(ToggleContext);
+  //console.log(toggle.twitterFeed);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -50,7 +52,7 @@ export default HomeScreen = ({ navigation }) => {
   return (
     <FlatList
       data={MENUS}
-      style={getThemeBg(colorScheme === "light")} 
+      style={getThemeBg(toggle.darkTheme)} 
       renderItem={(itemData) => {
         return (
           <GridTile

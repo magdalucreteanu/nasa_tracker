@@ -1,9 +1,10 @@
-import React, {useLayoutEffect, useState, useEffect} from 'react';
-import { FlatList, View, Text, StyleSheet, Image, useColorScheme, SafeAreaView, ScrollView, StatusBar, TouchableHighlight, Alert } from 'react-native';
+import React, {useLayoutEffect, useState, useEffect, useContext} from 'react';
+import { FlatList, View, Text, StyleSheet, Image, SafeAreaView, ScrollView, StatusBar, TouchableHighlight, Alert } from 'react-native';
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { format } from "date-fns";
+import {ToggleContext} from "../data/ToggleContext";
 
 
 import {getBaseTextTheme, getThemeBg, getTitleTextTheme} from "../constants/Themes";
@@ -36,7 +37,7 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
     });
   }, [navigation]);
 
-  const colorScheme = useColorScheme();
+  const [toggle, setToggle] = useContext(ToggleContext);
 
     loadData = async (currentDate) => {
       try {
@@ -76,9 +77,9 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
 
 
   return (
-    <View style={[getThemeBg(colorScheme === "light"), styles.mainView]}>
+    <View style={[getThemeBg(toggle.darkTheme), styles.mainView]}>
       <View style={styles.datePicker}>
-        <Text style={getBaseTextTheme(colorScheme === "light")}> Date: {date.toLocaleDateString()}</Text>
+        <Text style={getBaseTextTheme(toggle.darkTheme)}> Date: {date.toLocaleDateString()}</Text>
         <Button
           type="clear"
           icon={<Ionicons name="md-calendar" size={24} color={Colors.calendarIconColor} />}
@@ -100,7 +101,7 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
           <ScrollView>
             <FlatList
                   data={data}
-                  style={getThemeBg(colorScheme === "light")}
+                  style={getThemeBg(toggle.darkTheme)}
                   renderItem={(itemData) => {
                     return (
                      <Image
