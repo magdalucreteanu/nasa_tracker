@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { getBaseTextTheme, getThemeBg, getTitleTextTheme } from "../constants/Themes";
 import Colors from "../constants/Colors";
 import {ToggleContext} from "../data/ToggleContext";
+import YoutubePlayer from "react-native-youtube-iframe";
 
 export default ApodScreen = ({ route, navigation }) => {
   const { itemId } = route.params;
@@ -42,6 +43,14 @@ export default ApodScreen = ({ route, navigation }) => {
           url: 'https://apod.nasa.gov/apod/image/2105/AS17-137-20979_1024.jpg',
           explanation: 'Patches, patches, patches...'
       };*/
+
+      // parse video id for youtube
+      if (json.media_type == 'video') {
+          let startPosition = "https://www.youtube.com/embed/".length;
+          let endPosition = json.url.indexOf('&');
+          let videoId = json.url.slice(startPosition, endPosition);
+          json.url = videoId;
+      }
       setData(json);
     } catch (error) {
       Alert.alert('error');
@@ -68,7 +77,6 @@ export default ApodScreen = ({ route, navigation }) => {
         loadData(new Date());
       }, []);
 
-
   return (
     <View style={[getThemeBg(toggle.darkTheme), styles.mainView]}>
       <View style={styles.datePicker}>
@@ -94,11 +102,17 @@ export default ApodScreen = ({ route, navigation }) => {
       <View style={{ flex: 10 }}>
         <SafeAreaView style={styles.container}>
           <ScrollView>
-            <Image
-              style={styles.image}
-              source={{ uri: data.url }}
-              resizeMode="contain"
-            />
+            {data.media_type == 'image'? <Image
+                                           style={styles.image}
+                                           source={{ uri: data.url }}
+                                           resizeMode="contain"
+                                          />
+                                       :
+                                       <SafeAreaView style={{ flex: 1 }}>
+                                             <YoutubePlayer height={250} videoId={data.url} />
+                                           </SafeAreaView>
+            }
+
             <Text style={[getBaseTextTheme(toggle.darkTheme), styles.textArea]}>
               {data.explanation}
             </Text>

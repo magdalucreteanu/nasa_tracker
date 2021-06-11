@@ -31,8 +31,35 @@ npm install react-dark-mode-toggle \
 
 END UPDATE 05.06
 
+
+UPDATE 11.06
+
+https://lonelycpp.github.io/2020/03/15/react-native-youtube/
+npm install --save react-native-webview
+npm install --save react-native-youtube-iframe
+
+END UPDATE 11.06
+
 npm init \
 npm start
+
+
+
+
+
+How-to Youtube Embed
+https://github.com/react-native-webview/react-native-webview
+npm install --save react-native-webview
+
+https://coderrocketfuel.com/article/embed-a-youtube-video-in-a-react-webpage
+npm install react-player --save
+
+https://dev.to/jimjunior/how-to-create-a-responsive-video-player-in-react-4997
+npm install reactjs-media
+
+Youtube embedded
+https://dev.to/bravemaster619/simplest-way-to-embed-a-youtube-video-in-your-react-app-3bk2
+
 
 
 Fehlerbehandlung:
