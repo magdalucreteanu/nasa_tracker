@@ -18,7 +18,7 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
 
   const {rover} = route.params;
 
-  const [data, setData] = useState('');
+  const [data, setData] = useState([]);
 
   const [date, setDate] = useState(yesterday);
   const [mode, setMode] = useState('date');
@@ -76,7 +76,6 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
         loadData(yesterday);
       }, []);
 
-
   return (
     <View style={[getThemeBg(toggle.darkTheme), styles.mainView]}>
       <View style={styles.datePicker}>
@@ -99,7 +98,7 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
       )}
       <View style={{ flex: 10 }}>
         <SafeAreaView style={styles.container}>
-          <ScrollView>
+
             <FlatList
                   data={data}
                   style={getThemeBg(toggle.darkTheme)}
@@ -114,7 +113,7 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
                   }}
                   numColumns={1}
                 />
-          </ScrollView>
+
         </SafeAreaView>
       </View>
     </View>
