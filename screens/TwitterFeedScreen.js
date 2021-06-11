@@ -12,6 +12,7 @@ export default TwitterFeedScreen = ({route, navigation}) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
+      headerTintColor: Colors.settingsIconColor,
       headerTitle: "Twitter Feed",
       headerRight: () => (
         <Button

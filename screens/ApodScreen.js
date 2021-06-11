@@ -21,6 +21,7 @@ export default ApodScreen = ({ route, navigation }) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
+      headerTintColor: Colors.settingsIconColor,
       headerTitle: "APOD",
       headerRight: () => (
         <Button

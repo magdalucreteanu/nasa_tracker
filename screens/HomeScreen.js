@@ -13,6 +13,7 @@ export default HomeScreen = ({ navigation }) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
+      headerTintColor: Colors.settingsIconColor,
       headerRight: () => (
         <Button
           type="clear"

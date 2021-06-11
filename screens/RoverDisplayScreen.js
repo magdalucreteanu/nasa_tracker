@@ -26,6 +26,7 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
+      headerTintColor: Colors.settingsIconColor,
       headerTitle: rover,
       headerRight: () => (
         <Button

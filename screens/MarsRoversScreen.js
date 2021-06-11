@@ -16,6 +16,7 @@ export default MarsRoversScreen = ({ route, navigation }) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
+      headerTintColor: Colors.settingsIconColor,
       headerTitle: "Mars Rovers",
       headerRight: () => (
         <Button

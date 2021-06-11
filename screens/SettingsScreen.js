@@ -1,12 +1,20 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useLayoutEffect, useState, useEffect, useContext } from 'react';
 import { View, Text, TouchableWithoutFeedback, Keyboard, StyleSheet, Switch, AsyncStorage, Alert } from 'react-native';
 import { getThemeBg, getBaseTextTheme, getTitleTextTheme } from "../constants/Themes";
 import { ToggleContext } from '../data/ToggleContext';
 import { storeTheme } from "../data/AppStorage";
+import Colors from "../constants/Colors";
 
 export default SettingsScreen = ({ route, navigation }) => {
   const { title } = route.params;
   const [toggle, setToggle] = useContext(ToggleContext);
+
+ useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTintColor: Colors.settingsIconColor,
+      headerTitle: "Settings",
+    });
+  }, [navigation]);
 
   const addHandler = name => {
     console.log("add this " + title + ": " + name);
