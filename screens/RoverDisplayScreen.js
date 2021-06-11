@@ -11,16 +11,24 @@ import {getBaseTextTheme, getThemeBg, getTitleTextTheme} from "../constants/Them
 import Colors from "../constants/Colors";
 
 export default RoverDisplayScreen = ({ route, navigation}) => {
+  const {rover} = route.params;
 
   let today = new Date();
-  let yesterday = new Date();
-  yesterday. setDate(today. getDate() - 1);
-
-  const {rover} = route.params;
+  let roverDate = new Date();
+  if (rover === 'Curiosity') {
+      // Datzum für Curiosity ist gestern
+      roverDate.setDate(today. getDate() - 1);
+  } else if (rover === 'Opportunity') {
+      // Datum für Opportunity ist 2018-06-05, danach gab es keine brauchbare Fotos mehr
+      roverDate = new Date("2018-06-05");
+  } else if (rover === 'Spirit') {
+      // Datum für Spirit ist 2010-03-03, danach gab es keine brauchbare Fotos mehr
+      roverDate = new Date("2010-03-03");
+  }
 
   const [data, setData] = useState([]);
 
-  const [date, setDate] = useState(yesterday);
+  const [date, setDate] = useState(roverDate);
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
 
@@ -73,7 +81,7 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
   }
 
     useEffect(() => {
-        loadData(yesterday);
+        loadData(roverDate);
       }, []);
 
   return (
