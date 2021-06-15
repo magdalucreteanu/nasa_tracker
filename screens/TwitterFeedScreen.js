@@ -1,14 +1,27 @@
-import React, {useLayoutEffect, useContext} from 'react';
+import React, {useLayoutEffect, useContext, useState} from 'react';
 import {View, Text} from 'react-native';
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 import {getBaseTextTheme, getThemeBg} from "../constants/Themes";
 import Colors from "../constants/Colors";
 import {ToggleContext} from "../data/ToggleContext";
+import { RANDOMFACTS } from '../data/random-facts';
 
 export default TwitterFeedScreen = ({route, navigation}) => {
   const {itemId} = route.params;
   const [toggle, setToggle] = useContext(ToggleContext);
+  const [randomFact, setRandomFact] = useState('');
+
+  const randomFactHandler = () => {
+    let max = RANDOMFACTS.length;
+    let min = 1;
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    let number = Math.floor(Math.random() * (max - min +1)) + min;
+    const random = RANDOMFACTS.find(item => item.id === number);
+    setRandomFact(random.fact);
+    console.log(randomFact);
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -26,7 +39,8 @@ export default TwitterFeedScreen = ({route, navigation}) => {
 
   return (
     <View style={[getThemeBg(toggle.darkTheme), {flex: 1}]}>
-        <Text style={getBaseTextTheme(toggle.darkTheme)}>This is Twitter Feed</Text>
+        <Button title="Get Random Fact" onPress={randomFactHandler} />
+        <Text style={getBaseTextTheme(toggle.darkTheme)}>{randomFact}</Text>
     </View>
   );
 };
