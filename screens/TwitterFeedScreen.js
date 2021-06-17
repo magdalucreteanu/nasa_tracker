@@ -46,7 +46,7 @@ export default TwitterFeedScreen = ({route, navigation}) => {
         <Button buttonStyle={getButtonTheme(toggle.darkTheme)} titleStyle={getButtonTextTheme(toggle.darkTheme)} title="Get Random Fact" onPress={randomFactHandler} />
         <Text style={getTitleTextTheme(toggle.darkTheme)}>{randomFactTitle}</Text>
         <Text style={getBaseTextTheme(toggle.darkTheme)}>{randomFact}</Text>
-        <Text style={getBaseTextTheme(toggle.darkTheme)}>{randomFactUrl}</Text>
+        <Text style={[getBaseTextTheme(toggle.darkTheme), {fontSize: 12, paddingTop:5}]}>{randomFactUrl}</Text>
     </View>
   );
 };
