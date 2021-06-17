@@ -68,3 +68,16 @@ export const getHeaderTextTheme = (isLight) => {
         color:  "#5e60ce",
     }
 };
+
+export const getButtonTheme = (isLight) => {
+    return {
+        backgroundColor: isLight ?  "#101010" : "#bbd0ff",
+    }
+};
+
+export const getButtonTextTheme = (isLight) => {
+    return {
+        fontSize: 24,
+        color: isLight ? "white" : "black",
+    }
+};

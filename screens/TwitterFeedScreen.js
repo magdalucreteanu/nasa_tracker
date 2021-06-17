@@ -2,7 +2,7 @@ import React, {useLayoutEffect, useContext, useState} from 'react';
 import {View, Text} from 'react-native';
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
-import {getBaseTextTheme, getThemeBg} from "../constants/Themes";
+import {getBaseTextTheme, getThemeBg, getTitleTextTheme, getButtonTheme, getButtonTextTheme} from "../constants/Themes";
 import Colors from "../constants/Colors";
 import {ToggleContext} from "../data/ToggleContext";
 import { RANDOMFACTS } from '../data/random-facts';
@@ -10,7 +10,9 @@ import { RANDOMFACTS } from '../data/random-facts';
 export default TwitterFeedScreen = ({route, navigation}) => {
   const {itemId} = route.params;
   const [toggle, setToggle] = useContext(ToggleContext);
+  const [randomFactTitle, setRandomFactTitle] = useState('');
   const [randomFact, setRandomFact] = useState('');
+  const [randomFactUrl, setRandomFactUrl] = useState('');
 
   const randomFactHandler = () => {
     let max = RANDOMFACTS.length;
@@ -19,8 +21,10 @@ export default TwitterFeedScreen = ({route, navigation}) => {
     max = Math.floor(max);
     let number = Math.floor(Math.random() * (max - min +1)) + min;
     const random = RANDOMFACTS.find(item => item.id === number);
+    setRandomFactTitle(random.title);
     setRandomFact(random.fact);
-    console.log(randomFact);
+    setRandomFactUrl(random.url);
+    //console.log(randomFact);
   };
 
   useLayoutEffect(() => {
@@ -38,9 +42,11 @@ export default TwitterFeedScreen = ({route, navigation}) => {
   }, [navigation]);
 
   return (
-    <View style={[getThemeBg(toggle.darkTheme), {flex: 1}]}>
-        <Button title="Get Random Fact" onPress={randomFactHandler} />
+    <View style={[getThemeBg(toggle.darkTheme), {flex: 1, padding: 20}]}>
+        <Button buttonStyle={getButtonTheme(toggle.darkTheme)} titleStyle={getButtonTextTheme(toggle.darkTheme)} title="Get Random Fact" onPress={randomFactHandler} />
+        <Text style={getTitleTextTheme(toggle.darkTheme)}>{randomFactTitle}</Text>
         <Text style={getBaseTextTheme(toggle.darkTheme)}>{randomFact}</Text>
+        <Text style={getBaseTextTheme(toggle.darkTheme)}>{randomFactUrl}</Text>
     </View>
   );
 };
