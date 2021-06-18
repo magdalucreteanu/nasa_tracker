@@ -22,7 +22,7 @@ export const getTitleTextTheme = (isLight) => {
 
 export const getGridTileTheme = (isLight) => {
     return {
-        backgroundColor: isLight ?  "#101010" : "#bbd0ff",
+        backgroundColor: isLight ?  "#525252" : "#bbd0ff",
         flex: 1,
         margin: 15,
         padding: 15,

@@ -7,6 +7,7 @@ import {getBaseTextTheme, getThemeBg, getTitleTextTheme, getButtonTheme, getButt
 import Colors from "../constants/Colors";
 import {ToggleContext} from "../data/ToggleContext";
 import { RANDOMFACTS } from '../data/random-facts';
+import GridTile from "../components/GridTile";
 
 export default RandomFactsScreen = ({route, navigation}) => {
   const {itemId} = route.params;
@@ -46,14 +47,16 @@ export default RandomFactsScreen = ({route, navigation}) => {
         randomFactHandler();
       }, []);
 
+//  <GridTile text="Get Random Fact" onClick={randomFactHandler} id="randomFact"/>
+// <Button buttonStyle={getButtonTheme(toggle.darkTheme)} titleStyle={getButtonTextTheme(toggle.darkTheme)} title="Get Random Fact" onPress={randomFactHandler} />
   return (
-    <View style={[getThemeBg(toggle.darkTheme), {flex: 1, padding: 20}]}>
-        <Button buttonStyle={getButtonTheme(toggle.darkTheme)} titleStyle={getButtonTextTheme(toggle.darkTheme)} title="Get Random Fact" onPress={randomFactHandler} />
-        <Text style={getTitleTextTheme(toggle.darkTheme)}>{randomFactTitle}</Text>
-        <Text style={getBaseTextTheme(toggle.darkTheme)}>{randomFact}</Text>
-        <Hyperlink linkDefault={ true } linkStyle={ { color: '#2980b9', fontSize: 20 } }>
-            <Text style={[getBaseTextTheme(toggle.darkTheme), {fontSize: 12, paddingTop:5}]}>{randomFactUrl}</Text>
-        </Hyperlink>
-    </View>
+      <View style={[getThemeBg(toggle.darkTheme), {flex: 1, padding: 20}]}>
+          <GridTile text="Get Random Fact" onClick={randomFactHandler} id="randomFact"/>
+          <Text style={getTitleTextTheme(toggle.darkTheme)}>{randomFactTitle}</Text>
+          <Text style={getBaseTextTheme(toggle.darkTheme)}>{randomFact}</Text>
+          <Hyperlink linkDefault={ true } linkStyle={ { color: '#2980b9', fontSize: 20 } }>
+              <Text style={[getBaseTextTheme(toggle.darkTheme), {fontSize: 12, paddingTop:5}]}>{randomFactUrl}</Text>
+          </Hyperlink>
+      </View>
   );
 };
