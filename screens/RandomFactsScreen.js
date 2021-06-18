@@ -1,6 +1,7 @@
 import React, {useLayoutEffect, useContext, useEffect, useState} from 'react';
 import {View, Text} from 'react-native';
 import { Button } from "react-native-elements";
+import Hyperlink from 'react-native-hyperlink'
 import { Ionicons } from "@expo/vector-icons";
 import {getBaseTextTheme, getThemeBg, getTitleTextTheme, getButtonTheme, getButtonTextTheme} from "../constants/Themes";
 import Colors from "../constants/Colors";
@@ -50,7 +51,9 @@ export default RandomFactsScreen = ({route, navigation}) => {
         <Button buttonStyle={getButtonTheme(toggle.darkTheme)} titleStyle={getButtonTextTheme(toggle.darkTheme)} title="Get Random Fact" onPress={randomFactHandler} />
         <Text style={getTitleTextTheme(toggle.darkTheme)}>{randomFactTitle}</Text>
         <Text style={getBaseTextTheme(toggle.darkTheme)}>{randomFact}</Text>
-        <Text style={[getBaseTextTheme(toggle.darkTheme), {fontSize: 12, paddingTop:5}]}>{randomFactUrl}</Text>
+        <Hyperlink linkDefault={ true } linkStyle={ { color: '#2980b9', fontSize: 20 } }>
+            <Text style={[getBaseTextTheme(toggle.darkTheme), {fontSize: 12, paddingTop:5}]}>{randomFactUrl}</Text>
+        </Hyperlink>
     </View>
   );
 };

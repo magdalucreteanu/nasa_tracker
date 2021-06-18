@@ -40,6 +40,14 @@ npm install --save react-native-youtube-iframe
 
 END UPDATE 11.06
 
+
+UPDATE 18.06
+
+npm i --save react-native-hyperlink
+
+END UPDATE 18.06
+
+
 npm init \
 npm start
 
@@ -60,6 +68,10 @@ npm install reactjs-media
 Youtube embedded
 https://dev.to/bravemaster619/simplest-way-to-embed-a-youtube-video-in-your-react-app-3bk2
 
+
+
+How to Hyperlinks
+https://reactnativeforyou.com/how-to-add-hyperlinks-in-react-native/
 
 
 Fehlerbehandlung:
