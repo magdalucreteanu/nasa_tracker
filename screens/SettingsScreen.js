@@ -31,23 +31,6 @@ export default SettingsScreen = ({ route, navigation }) => {
     storeTheme(toggle);
   };
 
-  const twitterToggleSwitch = () => {
-    setToggle(toggle => ({
-      darkTheme: toggle.darkTheme, 
-      twitterFeed: !toggle.twitterFeed,
-    }));
-    storeTheme(toggle);
-  };
-
-  const [isApodEnabled, setIsApodEnabled] = useState(false);
-  const apodToggleSwitch = () => setIsApodEnabled(previousState => !previousState);
-  const [isCuriosityEnabled, setIsCuriosityEnabled] = useState(false);
-  const curiosityToggleSwitch = () => setIsCuriosityEnabled(previousState => !previousState);
-  const [isOpportunityEnabled, setIsOpportunityEnabled] = useState(false);
-  const opportunityToggleSwitch = () => setIsOpportunityEnabled(previousState => !previousState);
-  const [isSpiritEnabled, setIsSpiritEnabled] = useState(false);
-  const spiritToggleSwitch = () => setIsSpiritEnabled(previousState => !previousState);
-
   return (
     <View style={[getThemeBg(toggle.darkTheme), styles.mainView]}>
       <Text style={getTitleTextTheme(toggle.darkTheme)} >General</Text>
@@ -59,63 +42,6 @@ export default SettingsScreen = ({ route, navigation }) => {
           ios_backgroundColor="#3e3e3e"
           onValueChange={darkThemeToggleSwitch}
           value={toggle.darkTheme}
-        />
-      </View>
-
-      <Text style={getTitleTextTheme(toggle.darkTheme)} >Notifications</Text>
-      <View style={styles.baseTextView}>
-        <Text style={getBaseTextTheme(toggle.darkTheme)} >Twitter</Text>
-        <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={toggle.twitterFeed ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={twitterToggleSwitch}
-          value={toggle.twitterFeed}
-        />
-      </View>
-
-      <View style={styles.baseTextView}>
-        <Text style={styles.baseTextInactive} >APOD</Text>
-        <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isApodEnabled ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={apodToggleSwitch}
-          value={isApodEnabled}
-          disabled={true}
-        />
-      </View>
-      <View style={styles.baseTextView}>
-        <Text style={styles.baseTextInactive} >Curiosity Rover</Text>
-        <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isCuriosityEnabled ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={curiosityToggleSwitch}
-          value={isCuriosityEnabled}
-          disabled={true}
-        />
-      </View>
-      <View style={styles.baseTextView} >
-        <Text style={styles.baseTextInactive} >Opportunity Rover</Text>
-        <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isOpportunityEnabled ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={opportunityToggleSwitch}
-          value={isOpportunityEnabled}
-          disabled={true}
-        />
-      </View>
-      <View style={styles.baseTextView}>
-        <Text style={styles.baseTextInactive} >Spirit Rover</Text>
-        <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isSpiritEnabled ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={spiritToggleSwitch}
-          value={isSpiritEnabled}
-          disabled={true}
         />
       </View>
     </View>

@@ -5,7 +5,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import ApodScreen from '../screens/ApodScreen';
 import MarsRoversScreen from '../screens/MarsRoversScreen';
 import RoverDisplayScreen from '../screens/RoverDisplayScreen';
-import TwitterFeedScreen from '../screens/TwitterFeedScreen';
+import TwitterFeedScreen from '../screens/RandomFactsScreen';
 import {getHeaderTextTheme, getHeaderTheme} from "../constants/Themes";
 import Colors from "../constants/Colors";
 import useDarkMode from 'use-dark-mode';
@@ -27,7 +27,7 @@ export default HomeNavigator = () => {
       <HomeStack.Screen name="Apod" component={ApodScreen}/>
       <HomeStack.Screen name="MarsRovers" component={MarsRoversScreen}/>
       <HomeStack.Screen name="RoverDisplay" component={RoverDisplayScreen}/>
-      <HomeStack.Screen name="TwitterFeed" component={TwitterFeedScreen}/>
+      <HomeStack.Screen name="RandomFacts" component={RandomFactsScreen}/>
     </HomeStack.Navigator>
   );
 };

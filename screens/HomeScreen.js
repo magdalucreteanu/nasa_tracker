@@ -35,8 +35,8 @@ export default HomeScreen = ({ navigation }) => {
       title: 'Mars Rovers',
     },
     {
-      id: 'TwitterFeed',
-      title: 'Twitter Feed',
+      id: 'RandomFacts',
+      title: 'Random Facts',
     },
   ];
 
@@ -45,8 +45,8 @@ export default HomeScreen = ({ navigation }) => {
       navigation.navigate('Apod', { itemId: id });
     } else if ('MarsRovers' === id) {
       navigation.navigate('MarsRovers', { itemId: id });
-    } else if ('TwitterFeed' === id) {
-      navigation.navigate('TwitterFeed', { itemId: id });
+    } else if ('RandomFacts' === id) {
+      navigation.navigate('RandomFacts', { itemId: id });
     }
   };
 
