@@ -112,11 +112,13 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
                   style={getThemeBg(toggle.darkTheme)}
                   renderItem={(itemData) => {
                     return (
-                     <Image
-                       style={styles.image}
-                       source={{ uri: itemData.item.img_src }}
-                       resizeMode="contain"
-                     />
+                     <View style={{ padding: 1 }}>
+                         <Image
+                           style={styles.image}
+                           source={{ uri: itemData.item.img_src }}
+                           resizeMode="contain"
+                         />
+                     </View>
                     );
                   }}
                   numColumns={1}
