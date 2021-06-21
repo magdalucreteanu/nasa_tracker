@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Blank Template",
-    "slug": "Aufgabe7",
+    "name": "NASA Tracker",
+    "slug": "NASA Tracker",
     "privacy": "public",
     "platforms": [
       "ios",
