@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "NASA Tracker",
-    "slug": "NASA Tracker",
+    "slug": "NASATracker",
     "privacy": "public",
     "platforms": [
       "ios",

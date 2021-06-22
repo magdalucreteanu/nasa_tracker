@@ -50,13 +50,18 @@ export default RandomFactsScreen = ({route, navigation}) => {
 //  <GridTile text="Get Random Fact" onClick={randomFactHandler} id="randomFact"/>
 // <Button buttonStyle={getButtonTheme(toggle.darkTheme)} titleStyle={getButtonTextTheme(toggle.darkTheme)} title="Get Random Fact" onPress={randomFactHandler} />
   return (
-      <View style={[getThemeBg(toggle.darkTheme), {flex: 1, padding: 20}]}>
-          <GridTile text="Get Random Fact" onClick={randomFactHandler} id="randomFact"/>
+      <View style={[getThemeBg(toggle.darkTheme), {flex:1, padding: 20}]}>
+        <View style = {{flex: 1}}>
+          <GridTile text="Get Random Fact" onClick={randomFactHandler} id={"randomFact"}/>
+        </View>
+        <View style = {{flex: 5}}>
           <Text style={getTitleTextTheme(toggle.darkTheme)}>{randomFactTitle}</Text>
           <Text style={getBaseTextTheme(toggle.darkTheme)}>{randomFact}</Text>
           <Hyperlink linkDefault={ true } linkStyle={ { color: '#2980b9', fontSize: 20 } }>
               <Text style={[getBaseTextTheme(toggle.darkTheme), {fontSize: 12, paddingTop:5}]}>{randomFactUrl}</Text>
           </Hyperlink>
+          </View>
       </View>
+      
   );
 };
