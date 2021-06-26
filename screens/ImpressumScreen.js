@@ -7,9 +7,10 @@ export default ImpressumScreen = ({ route, navigation}) => {
   const [toggle, setToggle] = useContext(ToggleContext);
   return (
     <View style={[getThemeBg(toggle.darkTheme), styles.mainView]}>
-        <Text style={getTitleTextTheme(toggle.darkTheme)}>Entwickler:</Text>
-        <Text style={getBaseTextTheme(toggle.darkTheme)}>Magdalena Lucreteanu</Text>
-        <Text style={getBaseTextTheme(toggle.darkTheme)}>Kirsten Grahl</Text>
+        <Text style={getTitleTextTheme(toggle.darkTheme)}>Developed by:</Text>
+        <Text style={getBaseTextTheme(toggle.darkTheme)}>
+            {`Magdalena Lucreteanu\nKirsten Grahl\n\nNASA Tracker App ist im Rahmen des Faches Mobile Systeme in der HAW Hamburg entstanden.`}
+        </Text>
     </View>
   );
 };
