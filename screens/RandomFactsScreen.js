@@ -57,7 +57,9 @@ export default RandomFactsScreen = ({route, navigation}) => {
         <View style = {{flex: 5}}>
           <Text style={getTitleTextTheme(toggle.darkTheme)}>{randomFactTitle}</Text>
           <Text style={getBaseTextTheme(toggle.darkTheme)}>{randomFact}</Text>
-          <Hyperlink linkDefault={ true } linkStyle={ { color: '#2980b9', fontSize: 20 } }>
+          <Hyperlink
+                linkDefault={ true } linkStyle={ { color: '#2980b9', fontSize: 20 } }
+                linkText={ randomFactUrl => randomFactUrl.includes('http') ? '[Learn more]' : randomFactUrl }>
               <Text style={[getBaseTextTheme(toggle.darkTheme), {fontSize: 12, paddingTop:5}]}>{randomFactUrl}</Text>
           </Hyperlink>
           </View>
