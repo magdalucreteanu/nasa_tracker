@@ -37,8 +37,8 @@ export default SettingsScreen = ({ route, navigation }) => {
       <View style={styles.baseTextView}>
         <Text style={getBaseTextTheme(toggle.darkTheme)} >Dark Theme</Text>
         <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={toggle.darkTheme ? "#f5dd4b" : "#f4f3f4"}
+          trackColor={{ false: "#767577", true: "#bbd0ff" }}
+          thumbColor={toggle.darkTheme ? "#5e60ce" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
           onValueChange={darkThemeToggleSwitch}
           value={toggle.darkTheme}
