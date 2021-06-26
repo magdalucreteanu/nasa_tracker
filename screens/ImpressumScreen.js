@@ -9,7 +9,7 @@ export default ImpressumScreen = ({ route, navigation}) => {
     <View style={[getThemeBg(toggle.darkTheme), styles.mainView]}>
         <Text style={getTitleTextTheme(toggle.darkTheme)}>Developed by:</Text>
         <Text style={getBaseTextTheme(toggle.darkTheme)}>
-            {`Magdalena Lucreteanu\nKirsten Grahl\n\nNASA Tracker App ist im Rahmen des Faches Mobile Systeme in der HAW Hamburg entstanden.`}
+            {`Magdalena Lucreteanu\nKirsten Grahl\n\nNASA Tracker App was created as part of the Mobile Systems subject at HAW Hamburg.`}
         </Text>
     </View>
   );
