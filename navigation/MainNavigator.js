@@ -20,7 +20,7 @@ export default MainNavigator = () => {
 
           if (route.name === 'Home') {
             iconName = 'ios-home';
-          } else if (route.name === 'Impressum') {
+          } else if (route.name === 'Imprint') {
             iconName = focused ? 'ios-book' : 'ios-book-outline';
           }
 
@@ -34,7 +34,7 @@ export default MainNavigator = () => {
         }}
       >
         <Tab.Screen name="Home" component={HomeNavigator} />
-        <Tab.Screen name="Impressum" component={ImpressumNavigator} />
+        <Tab.Screen name="Imprint" component={ImpressumNavigator} />
       </Tab.Navigator>
     </NavigationContainer>
   );
