@@ -107,6 +107,9 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
       <View style={{ flex: 10 }}>
         <SafeAreaView style={styles.container}>
 
+            {data.length===0 ?
+            <Text style={getBaseTextTheme(toggle.darkTheme)}>There are no photos for the selected date.</Text>
+            :
             <FlatList
                   data={data}
                   style={getThemeBg(toggle.darkTheme)}
@@ -123,6 +126,7 @@ export default RoverDisplayScreen = ({ route, navigation}) => {
                   }}
                   numColumns={1}
                 />
+                }
 
         </SafeAreaView>
       </View>
